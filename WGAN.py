@@ -1,3 +1,20 @@
+import tensorflow as tf
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import (
+    Conv2D,
+    LeakyReLU,
+    Dropout,
+    BatchNormalization,
+    Flatten,
+    Dense,
+    Activation,
+    Input,
+    Reshape,
+    Conv2DTranspose
+)
+import numpy as np
+
+
 class WGAN():
     def __init__(self, dataset, lr=5e-5, c=0.01, m=64, n_critic=5, min_z=-1, max_z=1):
         # Config
@@ -47,7 +64,7 @@ class WGAN():
     def clip_weights(self):
         for l in self.C.layers:
             weights = l.get_weights()
-            weights = [tf.clip_by_value(w, -self.c, self.c) for w in weights]
+            weights = [np.clip(w, -self.c, self.c) for w in weights]
             l.set_weights(weights)
     
     @tf.function

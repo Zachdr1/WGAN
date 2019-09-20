@@ -1,4 +1,4 @@
-# WGAN
+# WGAN <br/>
 WGAN Implementation using Tensorflow 2.0 <br/>
 The primary file for anyone wishing to use my implementation is WGAN.py. The other py and ipynb files are just what I used for testing. <br/>
 
